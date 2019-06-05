@@ -11,7 +11,7 @@ import org.junit.Test;
 import com.liuyouyun.dao.annotation.PeopleDao;
 import com.liuyouyun.entity.People;
 import com.liuyouyun.util.MybatisUtil;
-
+// 测试pull操作
 public class TestPeopleUnit {
 
 	@Test
