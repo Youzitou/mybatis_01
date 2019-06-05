@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<!--  namespace ： 要求在整个项目中 唯一  ，一般使用 类的全类名 -->
+<mapper namespace="com.liuyouyun.dto.Student">
+	 <!--  根据id查询 学生对象   
+	    id: 在当前xml中 唯一 -->
+	<select id="selectById" parameterType="int" 
+	resultType="com.liuyouyun.dto.Student"  >
+		select * from student where id=#{id}
+	</select>
+	
+	<!-- 根据id删除 -->
+	<delete id="delete" parameterType="int">
+		delete from student where id=#{stuid}
+	</delete>
+	
+	<!-- 添加 -->
+	<insert id="add" parameterType="com.liuyouyun.dto.Student" >
+	 insert into student values(5,#{stuname},#{age},#{sex},#{birthday})
+	  <!-- 注意sql语句不能加分号 -->
+	
+	</insert>
+	
+	<!--  修改 -->
+	<update id="update" parameterType="com.liuyouyun.dto.Student">
+		update student set stuname=#{stuname} , age=#{age} ,sex=#{sex} ,birthday=#{birthday} 
+		where id=#{id}
+	</update>
+	
+	<!-- 查询所有    自动将结果集映射成 List<Student>  前提是 字段名与属性名一致-->
+	<select id="listAll" resultType="com.liuyouyun.dto.Student">
+		select * from student
+	</select>
+</mapper>

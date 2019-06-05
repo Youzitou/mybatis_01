@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.liuyouyun.dao.UserDao">
+	<!--  如果想框架自动生成 UserDao的实现类，必须满足以下条件 
+		1、namespace ： 接口的全类名
+		2、 每一个标签的id ： 必须是 接口的方法名
+		3、每一个标签的参数类型 ：  必须是 方法的 参数类型  ，
+		4、每一个标签的返回值 ：  方法的返回值， 对应
+	 -->
+	 <insert id="add"  parameterType="com.liuyouyun.entity.User">
+	      insert into t_user values(null,#{name},#{password},#{age},#{birthday})
+	 </insert>
+
+	<!--  对于一个参数id ，可以写成 #{形参} 或 ${value} -->
+	<delete id="delete" parameterType="int">
+		delete from t_user where id=${value}
+	</delete>
+	
+	<!--  取值必须和 实体类的 属性保持一致，且提供get/set方法的 -->
+	<update id="update" parameterType="com.liuyouyun.entity.User">
+		update t_user set name=#{name} , password=#{password}
+		, age=#{age} ,birthday=#{birthday} where id=#{id}
+	</update>
+
+     <select id="findById" parameterType="int" resultType="com.liuyouyun.entity.User">
+     	 select * from t_user where id=#{id}
+     </select>
+     
+     <select id="listAll" resultType="com.liuyouyun.entity.User">
+     	select * from t_user
+     </select>
+</mapper>
